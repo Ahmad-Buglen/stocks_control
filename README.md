@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+1. Run `bundle install`
+2. Run `rake db:create`
+3. Run `rake db:migrate`
+4. Run `rake db:seed`
+5. Start a server `rails s`
 
-Things you may want to cover:
 
-* Ruby version
+## Description
 
-* System dependencies
+Завоз товара(product) на склад(stock) в указанном количестве(count).
+```
+Supply.add(stock, product, count, view)
+```
 
-* Configuration
+Получение остатков на складе(stock) по продукту(product). По умолчанию на данный момент.
+```
+Balance.get(stock, product, time = Time.now)
+```
 
-* Database creation
+Продажа товара со склада(view = 'sale').
+```
+Shipment.sale(stock, product, count, view)
+```
 
-* Database initialization
+Перевозка со склада на склад(view = 'transport').
+```
+Shipment.transport(stock_from, stock_where, product, count, view)
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+'stock.balance' - баланс склада.
