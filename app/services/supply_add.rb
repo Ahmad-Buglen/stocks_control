@@ -8,9 +8,11 @@ class SupplyAdd
           balance = Balance.get(stock, product)
           Balance.create!(:stock => stock, :product => product, :count => balance + count)
         end
+      else
+        stock.errors.add(:add, "Error when adding to the database")
       end
     rescue StandardError
-      puts 'Error when adding to the database'
+      stock.errors.add(:add, "Error when adding to the database")
     end
   end
 end

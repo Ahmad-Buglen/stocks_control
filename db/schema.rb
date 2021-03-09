@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_165400) do
+ActiveRecord::Schema.define(version: 2021_02_24_130857) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,10 +36,32 @@ ActiveRecord::Schema.define(version: 2021_02_13_165400) do
     t.index ["stock_id"], name: "index_balances_on_stock_id"
   end
 
+  create_table "create_relationships", primary_key: ["follower_id", "followed_id"], force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pepegas", primary_key: ["param1", "param2", "param3"], force: :cascade do |t|
+    t.bigint "param1"
+    t.bigint "param2"
+    t.bigint "param3"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", primary_key: ["follower_id", "followed_id"], force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

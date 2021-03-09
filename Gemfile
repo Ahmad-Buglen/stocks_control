@@ -58,3 +58,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activeadmin'
 
 gem 'rubocop', require: false
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.2'
+  
+  gem 'shoulda-matchers'
+end

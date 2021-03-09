@@ -10,9 +10,11 @@ class ShipmentOperation
           s.balance = s.balance + (p.price * count)
           s.save!
         end
+      else
+        stock.errors.add(:sale, "Error when adding to the database")
       end
     rescue StandardError
-      puts 'Error when adding to the database'
+      stock.errors.add(:sale, "Error when adding to the database")
     end
   end
 
@@ -24,9 +26,11 @@ class ShipmentOperation
           get(stock_from, product, count, view, balance)
           Supply.add(stock_where, product, count, view)
         end
+      else
+        stock_from.errors.add(:transport, "Error when adding to the database")
       end
     rescue StandardError
-      puts 'Error when adding to the database'
+      stock_from.errors.add(:transport, "Error when adding to the database")
     end
   end
 
